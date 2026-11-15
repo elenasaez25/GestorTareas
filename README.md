@@ -59,4 +59,7 @@ Aplicación Android desarrollada con Kotlin y Jetpack Compose para gestionar tar
 - [Pega aquí el enlace compartido de este chat]
 
 ## Incidencias conocidas
-- Ninguna; todas las funcionalidades obligatorias operan según lo esperado.
+- **Error de memoria durante la compilación (`java.lang.OutOfMemoryError: Java heap space`)**: Al compilar el proyecto por primera vez, la tarea `:app:mergeExtDexDebug` de Gradle falló por falta de memoria heap asignada por defecto a la máquina virtual de Java (JVM) al procesar las bibliotecas del proyecto (Jetpack Compose, Material Icons Extended, Room y Retrofit).
+  - **Solución aplicada**: Se configuró el archivo `gradle.properties` en la raíz del proyecto con el parámetro `org.gradle.jvmargs=-Xmx4096m -Dfile.encoding=UTF-8` para ampliar la memoria disponible a 4 GB, resolviendo el problema de forma permanente.
+  <img width="1154" height="299" alt="image" src="https://github.com/user-attachments/assets/51418e39-527f-4e42-98cc-bc1aa8a9bc84" />
+
